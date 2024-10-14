@@ -1,0 +1,37 @@
+@page
+@model ProjetoCorporativo.Pages.Demandas.EditModel
+@{
+    ViewData["Title"] = "Editar Demanda";
+}
+
+<h1>Editar Demanda</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Demanda.Id" />
+    <div class="form-group">
+        <label asp-for="Demanda.Titulo" class="control-label"></label>
+        <input asp-for="Demanda.Titulo" class="form-control" />
+        <span asp-validation-for="Demanda.Titulo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Demanda.Descricao" class="control-label"></label>
+        <textarea asp-for="Demanda.Descricao" class="form-control"></textarea>
+        <span asp-validation-for="Demanda.Descricao" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Demanda.Status" class="control-label"></label>
+        <input asp-for="Demanda.Status" class="form-control" />
+        <span asp-validation-for="Demanda.Status" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Demanda.Prazo" class="control-label"></label>
+        <input asp-for="Demanda.Prazo" class="form-control" type="date" />
+        <span asp-validation-for="Demanda.Prazo" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

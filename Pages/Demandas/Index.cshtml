@@ -1,0 +1,36 @@
+@page
+@model ProjetoCorporativo.Pages.Demandas.IndexModel
+@{
+    ViewData["Title"] = "Gerenciar Demandas";
+}
+
+<h1>Demandas</h1>
+
+<p>
+    <a class="btn btn-primary" asp-page="Create">Cadastrar Nova Demanda</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Status</th>
+            <th>Prazo</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Demanda)
+{
+        <tr>
+            <td>@item.Titulo</td>
+            <td>@item.Status</td>
+            <td>@item.Prazo.ToShortDateString()</td>
+            <td>
+                <a class="btn btn-sm btn-secondary" asp-page="Edit" asp-route-id="@item.Id">Editar</a>
+                <a class="btn btn-sm btn-danger" asp-page="Delete" asp-route-id="@item.Id">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
